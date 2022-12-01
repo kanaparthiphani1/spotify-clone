@@ -12,7 +12,9 @@ export const OuterContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     justify-content : center;
-    align-items: center
+    align-items: center;
+
+   
 `
 
 export const LoginCont = styled.div`
@@ -25,9 +27,14 @@ export const LoginCont = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items:center;
+    @media (max-width: 480px){
+        width: 75%;
+    }
+    @media (max-height: 480px){
+        height: 75%;
+    }
 
 `
-
 export const Logo = styled.img`
         width: 100px;
 `
@@ -37,7 +44,7 @@ export const Heading = styled.h1`
 `
 
 export const Button = styled.button`
-    width: 250px;
+    width: 75%;
     background-color: #1DB954;
     border-radius: 20px;
     border: 0px;
