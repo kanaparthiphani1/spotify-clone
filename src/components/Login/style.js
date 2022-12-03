@@ -43,7 +43,7 @@ export const Heading = styled.h1`
     color : white
 `
 
-export const Button = styled.button`
+export const Button = styled.a`
     width: 75%;
     background-color: #1DB954;
     border-radius: 20px;
@@ -52,5 +52,6 @@ export const Button = styled.button`
     padding: 10px 20px;
     font-weight: 600;
     cursor: pointer;
-
+    text-align: center;
+    margin-top: 20px;
 `
