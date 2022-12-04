@@ -4,6 +4,10 @@ import SpotifyWebApi from "spotify-web-api-node";
 import { useSpotify } from "../../Context/SpotifyProvider";
 import useAuth from "../../helpers/useAuth";
 import Home from "../Home";
+import Music from "../Music";
+import Player from "../Player";
+import Playlists from "../Playlists";
+import Profile from "../Profile";
 import "./style.css";
 
 const spotifyApi = new SpotifyWebApi({
@@ -17,37 +21,6 @@ const Dasboard = ({ code }) => {
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);
-
-    spotifyApi
-      .getCategories({
-        limit: 5,
-        offset: 0,
-        country: "IN",
-      })
-      .then(
-        function (data) {
-          console.log(data.body);
-        },
-        function (err) {
-          console.log("Something went wrong!", err);
-        }
-      );
-
-    spotifyApi
-      .getPlaylistsForCategory("0JQ5DAqbMKFIdOwkMWR5at", {
-        country: "IN",
-        limit: 10,
-        offset: 0,
-      })
-      .then(
-        function (data) {
-          console.log(data.body);
-        },
-        function (err) {
-          console.log("Something went wrong!", err);
-        }
-      );
-
     updateAccessToken(accessToken);
   }, [accessToken, updateAccessToken]);
 
@@ -81,8 +54,13 @@ const Dasboard = ({ code }) => {
           <div className="rightInnerContainer">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/music" element={<Music />} />
+             <Route path="/playlists" element={<Playlists />} />
             </Routes>
+            <Player />
           </div>
+          
         </div>
       </div>
     );

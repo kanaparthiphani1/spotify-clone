@@ -1,0 +1,11 @@
+.center{
+    width: 600px;
+    height: 600px;
+    color: rgb(255, 0, 0);
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(239, 239, 132, 0.571);
+    font-size: x-large;
+}

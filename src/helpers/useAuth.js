@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 export default function useAuth(code) {
   const [expiresIn, setExpiresIn] = useState();

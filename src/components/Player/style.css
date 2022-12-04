@@ -1,0 +1,21 @@
+.player-outer{
+    height: 150px;
+    position: fixed;
+    z-index: 11111;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-inner{
+    width: 50%;
+    /* padding: 20px; */
+    border-radius: 35px;
+    padding: 30px 30px 10px 30px;
+    background-color: #474646;
+}
+.player{
+    /* height: 80px; */
+}
