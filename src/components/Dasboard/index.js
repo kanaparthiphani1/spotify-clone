@@ -3,6 +3,7 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import SpotifyWebApi from "spotify-web-api-node";
 import { useSpotify } from "../../Context/SpotifyProvider";
 import useAuth from "../../helpers/useAuth";
+import Detail from "../Detail";
 import Home from "../Home";
 import Music from "../Music";
 import Player from "../Player";
@@ -56,7 +57,8 @@ const Dasboard = ({ code }) => {
               <Route path="/" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/music" element={<Music />} />
-             <Route path="/playlists" element={<Playlists />} />
+             <Route path="/playlists" element={<Detail />} />
+             <Route path="/detail" element={<Detail />} />
             </Routes>
             <Player />
           </div>

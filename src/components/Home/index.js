@@ -9,17 +9,23 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 const colors = [
-  "#EC6D45","#E39C40","#44B844","#4B5B63","#D8383B","#7F5FFF",
-  "#3965C5","#9EB8C6","#3AADC9","#8ABF3D"
-]
+  "#EC6D45",
+  "#E39C40",
+  "#44B844",
+  "#4B5B63",
+  "#D8383B",
+  "#7F5FFF",
+  "#3965C5",
+  "#9EB8C6",
+  "#3AADC9",
+  "#8ABF3D",
+];
 
 const Home = () => {
   const [newReleases, setNewReleases] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const { accessToken } = useSpotify();
-
-
 
   useEffect(() => {
     if (!accessToken) {
@@ -30,7 +36,7 @@ const Home = () => {
     spotifyApi
       .getNewReleases({ limit: 10, offset: 0, country: "IN" })
       .then(function (data) {
-        console.log(data.body);
+        console.log("new relewase : ", data.body);
         setNewReleases(data.body.albums.items);
       })
       .catch((err) => {
@@ -52,6 +58,43 @@ const Home = () => {
           console.log("Something went wrong!", err);
         }
       );
+
+    spotifyApi
+      .getCategory("toplists", {
+        country: "IN",
+      })
+      .then(
+        function (data) {
+          console.log("Single CAT : ", data.body);
+        },
+        function (err) {
+          console.log("Something went wrong!", err);
+        }
+      );
+
+    spotifyApi
+      .getPlaylistsForCategory("toplists", {
+        country: "BR",
+        limit: 2,
+        offset: 0,
+      })
+      .then(
+        function (data) {
+          console.log("PlayList from CAT", data.body);
+        },
+        function (err) {
+          console.log("Something went wrong!", err);
+        }
+      );
+
+    spotifyApi.getAlbum("0FIP7MeIO3yqL8K6uTz3b1").then(
+      function (data) {
+        console.log("Album information : ", data.body);
+      },
+      function (err) {
+        console.error(err);
+      }
+    );
   }, []);
 
   const NewReleases = () => {
@@ -92,12 +135,9 @@ const Home = () => {
         <h1 className="heading">Categories</h1>
         <div className="newReleaseInner">
           {categories.length > 0 &&
-            categories.map((val,ind) => (
+            categories.map((val, ind) => (
               <>
-                <ImageContainer1
-                  className="cont"
-                  backgroundColor= {colors[ind]}
-                >
+                <ImageContainer1 className="cont" backgroundColor={colors[ind]}>
                   <img
                     src={val.icons[0].url}
                     className="newReleaseimg1"

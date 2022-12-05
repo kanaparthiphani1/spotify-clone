@@ -27,7 +27,7 @@ const Player = () => {
             trackArtistColor : "white",
             sliderHandleColor: "#1ed75f"
           }}
-          uris={["spotify:artist:6HQYnRM4OzToCYPpVBInuU"]}
+          uris={["spotify:album:0FIP7MeIO3yqL8K6uTz3b1"]}
         />
       </div>
     </div>
