@@ -51,6 +51,7 @@
     justify-content: space-between;
     align-items: center;
     width: 88px;
+    cursor: pointer;
 }
 
 .icon{
@@ -90,8 +91,25 @@ tbody{
 .rowData:hover{
     background-color: #303030;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .trackNum{
     text-align: center;
+}
+
+.type{
+    padding-bottom: 6px;
+    font-weight: 500;
+}
+
+.albumName{
+    font-weight: 700;
+    font-size: 48px;
+}
+
+.artist{
+    padding-top: 10px;
+    font-weight: 500;
+    font-size: 15px;
 }

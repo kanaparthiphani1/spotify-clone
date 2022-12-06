@@ -41,7 +41,7 @@ const Detail = () => {
         console.error(err);
       }
     );
-  }, [albumId]);
+  }, [albumId,accessToken]);
 
   return (
     <>

@@ -7,7 +7,6 @@ import Detail from "../Detail";
 import Home from "../Home";
 import Music from "../Music";
 import Player from "../Player";
-import Playlists from "../Playlists";
 import Profile from "../Profile";
 import "./style.css";
 
@@ -17,7 +16,7 @@ const spotifyApi = new SpotifyWebApi({
 
 const Dasboard = ({ code }) => {
   const accessToken = useAuth(code);
-  const { updateAccessToken } = useSpotify();
+  const { updateAccessToken,uri } = useSpotify();
 
   useEffect(() => {
     if (!accessToken) return;
@@ -60,7 +59,7 @@ const Dasboard = ({ code }) => {
              <Route path="/playlists" element={<Detail />} />
              <Route path="/detail" element={<Detail />} />
             </Routes>
-            <Player />
+            {uri && <Player />}
           </div>
           
         </div>
