@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SpotifyWebApi from "spotify-web-api-node";
 import { useSpotify } from "../../Context/SpotifyProvider";
 import "./index.css";
@@ -25,7 +26,15 @@ const Home = () => {
   const [newReleases, setNewReleases] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const { accessToken } = useSpotify();
+  const { accessToken, updateAlbumId,updateUri } = useSpotify();
+
+  const navigate = useNavigate();
+  const onNewReleaseClick = (val) => {
+    console.log("clicked : ", val);
+    updateAlbumId(val.id);
+    updateUri(val.uri)
+    navigate("/detail");
+  };
 
   useEffect(() => {
     if (!accessToken) {
@@ -74,7 +83,7 @@ const Home = () => {
 
     spotifyApi
       .getPlaylistsForCategory("toplists", {
-        country: "BR",
+        country: "IN",
         limit: 2,
         offset: 0,
       })
@@ -107,6 +116,7 @@ const Home = () => {
               <>
                 <ImageContainer
                   className="cont"
+                  onClick={() => onNewReleaseClick(val)}
                   // backgroundColor= "#1ed75fb7"
                   name={
                     val.name.slice(0, 25) + val.name.length > 10 ? "...." : ""
@@ -159,11 +169,7 @@ const Home = () => {
     <div
       style={{
         width: "100%",
-        minHeight: "100vh",
-        // backgroundColor: "yellow",
-        // color: "red",
-        // fontWeight: "600",
-        // fontSize: "40px",
+        minHeight: "100vh"
       }}
     >
       <NewReleases />

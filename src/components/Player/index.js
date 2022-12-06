@@ -4,8 +4,9 @@ import { useSpotify } from "../../Context/SpotifyProvider";
 import "./style.css";
 
 const Player = () => {
-  const { accessToken } = useSpotify();
+  const { accessToken,uri } = useSpotify();
   console.log("Token: " + accessToken);
+  console.log("URI : ",uri );
   return (
     <div className="player-outer">
       <div className="player-inner">
@@ -27,7 +28,10 @@ const Player = () => {
             trackArtistColor : "white",
             sliderHandleColor: "#1ed75f"
           }}
-          uris={["spotify:album:0FIP7MeIO3yqL8K6uTz3b1"]}
+          uris={[uri]}
+          play={!uri?false:true}
+          magnifySliderOnHover={true}
+          autoPlay={true}
         />
       </div>
     </div>

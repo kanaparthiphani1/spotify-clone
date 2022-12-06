@@ -1,6 +1,6 @@
 .outer-detail{
     background-color: #181818;
-    min-height: 100vh;
+    min-height: 115vh;
     display: flex;
     flex-direction: column;
     padding: 20px 10px;
@@ -59,19 +59,23 @@
 }
 
 .albums-table{
-    border: 2px solid white;
     width: 100%;
     color: white;
     font-size: 16px;
     font-weight: 400;
+    border-collapse: collapse;
 
+}
 
+td{
+    border: none;
+        padding: 0px;
 }
 
 th{
     text-align: left;
     padding: 20px 10px;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #475569;
     font-size: 16px;
 }
 
@@ -81,6 +85,11 @@ tbody{
 
 .rowData{
     height: 70px;
+}
+
+.rowData:hover{
+    background-color: #303030;
+    border-radius: 20px;
 }
 
 .trackNum{
