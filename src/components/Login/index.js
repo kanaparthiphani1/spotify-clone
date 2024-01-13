@@ -9,7 +9,7 @@ import {
 
 
 const AUTH_URL =
-    "https://accounts.spotify.com/authorize?client_id=4d42149c2dfa424eb6e5f85a0b084b4f&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state"
+    "https://accounts.spotify.com/authorize?client_id=4d42149c2dfa424eb6e5f85a0b084b4f&response_type=code&redirect_uri=https://spotify-clone-three-rouge.vercel.app&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state"
   
 
 const Login= () => {
