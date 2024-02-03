@@ -11,10 +11,7 @@ export default function useAuth(code) {
       return;
     }
     axios
-      .post(
-        `${process.env.REACT_APP_REDIRECT_URI}:${process.env.REACT_APP_REDIRECT_PORT}/login`,
-        { code }
-      )
+      .post(`${process.env.REACT_APP_REDIRECT_URI}/login`, { code })
       .then((res) => {
         console.log("CAME HERE : ", res.data.accessToken);
         setAccessToken(res.data.accessToken);
@@ -31,12 +28,9 @@ export default function useAuth(code) {
     if (!refreshToken || !expiresIn) return;
     const interval = setInterval(() => {
       axios
-        .post(
-          `${process.env.REACT_APP_REDIRECT_URI}:${process.env.REACT_APP_REDIRECT_PORT}/refresh`,
-          {
-            refreshToken,
-          }
-        )
+        .post(`${process.env.REACT_APP_REDIRECT_URI}/refresh`, {
+          refreshToken,
+        })
         .then((res) => {
           setAccessToken(res.data.accessToken);
           setRefreshToken(res.data.refreshToken);
