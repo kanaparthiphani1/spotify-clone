@@ -11,15 +11,19 @@ export default function useAuth(code) {
       return;
     }
     axios
-      .post(`http://localhost:3001/login`, { code })
+      .post(
+        `${process.env.REACT_APP_REDIRECT_URI}:${process.env.REACT_APP_REDIRECT_PORT}/login`,
+        { code }
+      )
       .then((res) => {
+        console.log("CAME HERE : ", res.data.accessToken);
         setAccessToken(res.data.accessToken);
         setRefreshToken(res.data.refreshToken);
         setExpiresIn(res.data.expiresIn);
         window.history.pushState({}, null, "/");
       })
       .catch((err) => {
-        window.location = "/"
+        console.log(err);
       });
   }, [code]);
 
@@ -27,16 +31,19 @@ export default function useAuth(code) {
     if (!refreshToken || !expiresIn) return;
     const interval = setInterval(() => {
       axios
-        .post("http://localhost:3001/refresh", {
-          refreshToken,
-        })
+        .post(
+          `${process.env.REACT_APP_REDIRECT_URI}:${process.env.REACT_APP_REDIRECT_PORT}/refresh`,
+          {
+            refreshToken,
+          }
+        )
         .then((res) => {
           setAccessToken(res.data.accessToken);
           setRefreshToken(res.data.refreshToken);
         })
         .catch((err) => {});
-    },(expiresIn -60)*1000);
-    return () => clearInterval(interval)
+    }, (expiresIn - 60) * 1000);
+    return () => clearInterval(interval);
   }, [expiresIn, refreshToken]);
   return accessToken;
 }

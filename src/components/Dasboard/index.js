@@ -15,14 +15,14 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 const Dasboard = ({ code }) => {
-  const accessToken = useAuth(code);
-  const { updateAccessToken,uri } = useSpotify();
+  console.log("DASHBOARD LOADED : ", code);
+  const { updateAccessToken, uri } = useSpotify();
 
   useEffect(() => {
-    if (!accessToken) return;
-    spotifyApi.setAccessToken(accessToken);
-    updateAccessToken(accessToken);
-  }, [accessToken, updateAccessToken]);
+    if (!code) return;
+    spotifyApi.setAccessToken(code);
+    updateAccessToken(code);
+  }, [code, updateAccessToken]);
 
   const DasboardContainer = () => {
     return (
@@ -56,12 +56,11 @@ const Dasboard = ({ code }) => {
               <Route path="/" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/music" element={<Music />} />
-             <Route path="/playlists" element={<Detail />} />
-             <Route path="/detail" element={<Detail />} />
+              <Route path="/playlists" element={<Detail />} />
+              <Route path="/detail" element={<Detail />} />
             </Routes>
             {uri && <Player />}
           </div>
-          
         </div>
       </div>
     );
